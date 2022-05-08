@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gazora-webkert": {
+      "hosting": {
+        "gazora-project": [
+          "gazora-webkert"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gazora-webkert"
+  }
+}

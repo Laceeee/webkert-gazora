@@ -1,0 +1,53 @@
+<div class="div-flex">
+    <form [formGroup]="addressesForm" (ngSubmit)="addAddress()">
+        <div class="break"></div>
+        <div class="break"></div>
+        <mat-form-field>
+            <mat-label for="postal_code">Irányítószám: </mat-label>
+            <input matInput type="number" formControlName="postal_code" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="city">Város: </mat-label>
+            <input matInput type="text" formControlName="city" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="street">Közterület neve: </mat-label>
+            <input matInput type="text" formControlName="street" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="house_number">Házszám: </mat-label>
+            <input matInput type="number" formControlName="house_number" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="gasState">Gázóra állás: </mat-label>
+            <input matInput type="number" formControlName="gasState" />
+        </mat-form-field>
+
+        <span>
+            <span><button mat-raised-button color="primary" type="submit">Hozzáadás</button></span>
+        </span>
+    </form>
+    <div class="break"></div>
+    <div class="container" *ngIf="addresses.length !== 0">
+        <table>
+            <tr>
+                <th>Irányítószám</th>
+                <th>Város</th>
+                <th>Közterület neve</th>
+                <th>Házszám</th>
+                <th>Gázóra állás (m3)</th>
+                <th>Dátum</th>
+            </tr>
+            <tr *ngFor="let address of addresses; let i = index"
+                [ngClass]="i % 2 === 0 ? 'table-header-even' : 'table-header-odd'">
+                <td>{{address.postal_code}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.street}}</td>
+                <td>{{address.house_number}}</td>
+                <td>{{address.gasState}}</td>
+                <td>{{address.date | dateFormat}}</td>
+                <td><button (click)="deleteAddress(address.id)">Törlés</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
